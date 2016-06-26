@@ -1,0 +1,14 @@
+{
+  "name": "shouldileave",
+  "version": "0.0.1",
+  "description": "Travel time alerts for commuters.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ian Webster <ianw_npm@ianww.com> (http://ianww.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "google-distance": "^1.0.1"
+  }
+}
