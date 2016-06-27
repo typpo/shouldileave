@@ -1,13 +1,22 @@
-var distance = require('google-distance');
+var commander = require('commander');
+var trip = require('./lib/trip');
 
-distance.get({
-  origin: '2339 3rd St, San Francisco, CA',
-  destination: '190 Gladys Ave, Mountain View, CA',
-}, function(err, data) {
-  if (err) {
-    console.error('Error:', err);
-    return;
-  }
+commander
+  .version('0.0.1')
+  .usage('shouldileave --from <start location> --to <destination> --notify <minutes>')
+  .option('-f, --from <loc>', 'from location')
+  .option('-t, --to <loc>', 'to location')
+  .option('-n, --notify <threshold>', 'notification threshold, in minutes', parseInt)
+  .parse(process.argv);
 
-  console.log(parseInt(data.durationValue/60) + ' min');
+if (!commander.from || !commander.to || !commander.notify) {
+  commander.help();
+  process.exit(1);
+}
+
+trip.check(commander.from, commander.to, commander.notify, function(duration) {
+  // Notify!
+  console.log('**************************************************************');
+  console.log('Threshold met: ' + duration + ' minutes for your trip');
+  console.log('**************************************************************');
 });

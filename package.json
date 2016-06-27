@@ -9,6 +9,7 @@
   "author": "Ian Webster <ianw_npm@ianww.com> (http://ianww.com/)",
   "license": "MIT",
   "dependencies": {
+    "commander": "^2.9.0",
     "google-distance": "^1.0.1"
   }
 }
